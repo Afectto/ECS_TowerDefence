@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce29c84c7400924f9c7c9eab4defbde, type: 3}
+  m_Name: ArcherEnemyGroup
+  m_EditorClassIdentifier: 
+  _nameGroup: ArcherGroup
+  _enemyInfos:
+  - enemyPrefab: {fileID: 8531154655904387537, guid: 58e5dc6fd484ff145836c495bce557df, type: 3}
+    countInGroup: 5
+  _tier: 0

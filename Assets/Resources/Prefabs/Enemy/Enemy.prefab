@@ -90,6 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3ba8d79b7517a4192c385ab3564f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StatesList: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &6962040022172576719
 MonoBehaviour:
   m_ObjectHideFlags: 0

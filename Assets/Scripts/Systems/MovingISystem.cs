@@ -19,8 +19,9 @@ public partial struct MovingISystem : ISystem
         JobHandle jobHandle = new MoveJob
         {
             deltaTime = deltaTime,
-            targetDistanceComponents = SystemAPI.GetComponentLookup<AttackRangeComponent>(true)
-        }.ScheduleParallel(state.Dependency);
+            targetDistanceComponents = SystemAPI.GetComponentLookup<AttackRangeComponent>(true),
+            entityManager = World.DefaultGameObjectInjectionWorld.EntityManager
+        }.Schedule(state.Dependency);
         
         jobHandle.Complete();
         //
@@ -37,12 +38,14 @@ public partial struct MoveJob : IJobEntity
     public float deltaTime;
     [ReadOnly]
     public ComponentLookup<AttackRangeComponent> targetDistanceComponents;
+    public EntityManager entityManager;
     
     [BurstCompile]
-    public void Execute(ref MoveToPositionAspect moveToPositionAspect)
+    public void Execute(MoveToPositionAspect moveToPositionAspect, Entity entity)
     {
-        //float reachedTargetDistance = targetDistanceComponents[].distance;
-        moveToPositionAspect.Move(deltaTime,10);
+        float reachedTargetDistance = targetDistanceComponents[entity].distance;
+        bool isMoving = moveToPositionAspect.Move(deltaTime, reachedTargetDistance);
+        entityManager.SetComponentEnabled<WalkingStateTag>(entity, isMoving);
     }
 }
 

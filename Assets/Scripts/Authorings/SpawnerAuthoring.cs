@@ -18,7 +18,7 @@ public class SpawnerBaker : Baker<SpawnerAuthoring>
             xMax = 13f,
             yMin = -6f,
             yMax = 6f,
-            avoidanceRadius = 7f,
+            avoidanceRadius = 20f,
             enemyPrefab = GetEntity(authoring.enemyPrefab)
         });
     }

@@ -14,7 +14,7 @@ public readonly partial struct MoveToPositionAspect : IAspect
     private readonly RefRO<SpeedComponent> _speed;
     private readonly RefRW<TargetPositionComponent> _target;
 
-    public void Move(float deltaTime, float reachedTargetDistance)
+    public bool Move(float deltaTime, float reachedTargetDistance)
     {
         if (math.distancesq(_transform.ValueRW.Position, _target.ValueRW.value) > reachedTargetDistance)
         {
@@ -22,7 +22,10 @@ public readonly partial struct MoveToPositionAspect : IAspect
             
             _transform.ValueRW.Position += direction * deltaTime * _speed.ValueRO.value;
             _transform.ValueRW.Scale = direction.x > 0 ? -1 : 1;;
+            return true;
         }
+
+        return false;
     }
 
     public void TestReachedTargetPosition(RefRW<RandomComponent> randomComponent)

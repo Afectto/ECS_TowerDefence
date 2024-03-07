@@ -11,10 +11,10 @@ PrefabInstance:
     - target: {fileID: -4197352080939844601, guid: 75704e1dc40106447a4adbe080c8b56f, type: 3}
       propertyPath: GameObjectPrefab
       value: 
-      objectReference: {fileID: 506557131109171197, guid: 90b2ffa950c878d48827c7b95cfebffa, type: 3}
+      objectReference: {fileID: 3584817132100364874, guid: 1a6fb4bd5cb2bab4e84c5826d3f2b0d5, type: 3}
     - target: {fileID: 1856565755803644860, guid: 75704e1dc40106447a4adbe080c8b56f, type: 3}
       propertyPath: m_Name
-      value: Knight Enemy Variant
+      value: Solder Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2824292182931354074, guid: 75704e1dc40106447a4adbe080c8b56f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6962040022172576719, guid: 75704e1dc40106447a4adbe080c8b56f, type: 3}
       propertyPath: distance
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

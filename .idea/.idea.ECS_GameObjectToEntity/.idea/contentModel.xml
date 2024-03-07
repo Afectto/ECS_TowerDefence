@@ -12,6 +12,8 @@
           <e p="Image" t="Include" />
           <e p="Prefabs" t="Include">
             <e p="Enemy" t="Include">
+              <e p="EnemyPrefabs" t="Include" />
+              <e p="EnemyVariant" t="Include" />
               <e p="Miniature Army 2D V.1" t="Include">
                 <e p="Animation" t="Include">
                   <e p="Knight" t="Include" />
@@ -23,6 +25,9 @@
                 </e>
                 <e p="Sprite" t="Include" />
               </e>
+            </e>
+            <e p="ScriptableObject" t="Include">
+              <e p="EnemyGroup" t="Include" />
             </e>
           </e>
         </e>
@@ -50,9 +55,21 @@
             <e p="SpawnerComponent.cs" t="Include" />
             <e p="SpeedComponent.cs" t="Include" />
             <e p="Tags" t="Include">
-              <e p="EnemyTag.cs" t="Include" />
+              <e p="EnemyTag" t="Include">
+                <e p="AttackingStateTag.cs" t="Include" />
+                <e p="DieStateTag.cs" t="Include" />
+                <e p="EnemyTag.cs" t="Include" />
+                <e p="HurtStateTag.cs" t="Include" />
+                <e p="WalkingStateTag.cs" t="Include" />
+              </e>
             </e>
             <e p="TargetPositionComponent.cs" t="Include" />
+          </e>
+          <e p="EnemyInfo.cs" t="Include" />
+          <e p="ScriptableObject" t="Include">
+            <e p="EnemyGroup" t="Include">
+              <e p="EnemyGroup.cs" t="Include" />
+            </e>
           </e>
           <e p="Systems" t="Include">
             <e p="AnimateSystem.cs" t="Include" />

@@ -15,36 +15,32 @@ public partial struct SpawnerSystem : ISystem
     {
         EntityQuery enemyEntityQuery = World.DefaultGameObjectInjectionWorld.EntityManager.CreateEntityQuery(typeof(EnemyTag));
 
+
+        int spawnAmount = 1;
+        if (enemyEntityQuery.CalculateEntityCount() < spawnAmount)
+        {
+            for (int i = 0; i < spawnAmount; i++)
+            {
+                CreateEnemy();
+            }
+        }
+    }
+
+    private void CreateEnemy()
+    {
         SpawnerComponent spawnerComponent = SystemAPI.GetSingleton<SpawnerComponent>();
 
         EntityCommandBuffer entityCommandBuffer = new EntityCommandBuffer(Allocator.Temp);
 
         RefRW<RandomComponent> randomComponent = SystemAPI.GetSingletonRW<RandomComponent>();
-        
-        int spawnAmount = 1000;
-        if (enemyEntityQuery.CalculateEntityCount() < spawnAmount)
-        {
-            for (int i = 0; i < spawnAmount; i++)
-            {
-                CreateEnemy(entityCommandBuffer, spawnerComponent, randomComponent);
-            }
-        }
-        entityCommandBuffer.Playback(World.DefaultGameObjectInjectionWorld.EntityManager);
-    }
 
-    private void CreateEnemy(EntityCommandBuffer entityCommandBuffer, SpawnerComponent spawnerComponent, RefRW<RandomComponent> randomComponent)
-    {
         Entity spawnEntity = entityCommandBuffer.Instantiate(spawnerComponent.enemyPrefab);
-                
-        entityCommandBuffer.SetComponent(spawnEntity, new SpeedComponent
-        {
-            value = randomComponent.ValueRW.Random.NextFloat(1f, 5f)
-        });
-        
+
         entityCommandBuffer.SetComponent(spawnEntity, new LocalTransform
         {
             Position = GenerateRandomPosition(randomComponent, spawnerComponent)
         });
+        entityCommandBuffer.Playback(World.DefaultGameObjectInjectionWorld.EntityManager);
         
     }
     private float3 GenerateRandomPosition(RefRW<RandomComponent> randomComponent,SpawnerComponent spawnerComponent)
