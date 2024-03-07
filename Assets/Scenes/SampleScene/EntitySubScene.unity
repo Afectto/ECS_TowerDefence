@@ -138,7 +138,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &1400236920
 MonoBehaviour:
@@ -152,7 +152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8259948606ec54b9146d8b1ba7f53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8531154655904387537, guid: d98ebc5f0a3535e4ca72d3389906689d, type: 3}
+  enemyPrefab: {fileID: 8531154655904387537, guid: 21df889ad60e8be41945bdc87816459d, type: 3}
+  enemyGroups:
+  - {fileID: 11400000, guid: ccbcf0d85c3d92a46a3a4298ba5627a4, type: 2}
+  - {fileID: 11400000, guid: a535c64ecf72fe741a40ceb315a49e25, type: 2}
+  - {fileID: 11400000, guid: a6510cecf6ad3024b8e2b839f33a9771, type: 2}
+  - {fileID: 11400000, guid: 3e686d1243be49c4a8f129efbbaf1165, type: 2}
+  - {fileID: 11400000, guid: 5cfb235f2a39c534e8527f6e65c8ac6a, type: 2}
+  - {fileID: 11400000, guid: 8f5801c0eb9c32a4799f9fa77990a4f7, type: 2}
+  - {fileID: 11400000, guid: ac24043a68221ce4592c2d25d9c7a1b9, type: 2}
 --- !u!4 &1400236921
 Transform:
   m_ObjectHideFlags: 0

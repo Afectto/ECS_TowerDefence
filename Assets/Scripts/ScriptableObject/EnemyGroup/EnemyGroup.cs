@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 [CreateAssetMenu(fileName = "EnemyGroup", menuName = "GameInfo/New EnemyGroup")]
 public class EnemyGroup : ScriptableObject
 {

@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Burst;
 using Unity.Collections;
-using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Jobs;
-using UnityEngine;
 
 [BurstCompile]
 public partial struct MovingISystem : ISystem
@@ -24,11 +20,6 @@ public partial struct MovingISystem : ISystem
         }.Schedule(state.Dependency);
         
         jobHandle.Complete();
-        //
-        // new TestReachedTargetPositionJob
-        // {
-        //     randomComponent = randomComponent
-        // }.Run();
     }
 }
 
@@ -46,17 +37,5 @@ public partial struct MoveJob : IJobEntity
         float reachedTargetDistance = targetDistanceComponents[entity].distance;
         bool isMoving = moveToPositionAspect.Move(deltaTime, reachedTargetDistance);
         entityManager.SetComponentEnabled<WalkingStateTag>(entity, isMoving);
-    }
-}
-
-[BurstCompile]
-public partial struct TestReachedTargetPositionJob : IJobEntity
-{
-    [NativeDisableUnsafePtrRestriction]public RefRW<RandomComponent> randomComponent;
-    
-    [BurstCompile]
-    public void Execute(MoveToPositionAspect moveToPositionAspect)
-    {
-        moveToPositionAspect.TestReachedTargetPosition(randomComponent);
     }
 }
