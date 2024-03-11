@@ -26,9 +26,10 @@
                 <e p="Sprite" t="Include" />
               </e>
             </e>
-            <e p="ScriptableObject" t="Include">
-              <e p="EnemyGroup" t="Include" />
-            </e>
+          </e>
+          <e p="ScriptableObject" t="Include">
+            <e p="EnemyGroup" t="Include" />
+            <e p="EnemyInfo" t="Include" />
           </e>
         </e>
         <e p="SceneDependencyCache" t="Include" />
@@ -69,6 +70,7 @@
           <e p="ScriptableObject" t="Include">
             <e p="EnemyGroup" t="Include">
               <e p="EnemyGroup.cs" t="Include" />
+              <e p="EnemyInfoScriptableObject.cs" t="Include" />
             </e>
           </e>
           <e p="Systems" t="Include">

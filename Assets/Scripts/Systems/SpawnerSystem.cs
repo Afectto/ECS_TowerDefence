@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Entities;
@@ -8,87 +9,46 @@ using UnityEngine;
 public partial class SpawnerSystem : SystemBase
 {
     private List<EnemyGroup> _enemyGroups;
-
-    protected override void OnCreate()
-    {
-        AddAllEnemyGroup();
-    }
-
-    private void AddAllEnemyGroup()
-    {
-        _enemyGroups = new List<EnemyGroup>();
-        
-        var allEnemyGroup = Resources.LoadAll<EnemyGroup>("ScriptableObject/EnemyGroup");
-        foreach (var grGroup in allEnemyGroup)
-        {
-            _enemyGroups.Add(grGroup);
-        }
-    }
+    private float timer = Single.MaxValue;
     
     protected override void OnUpdate()
     {
-        EntityQuery enemyEntityQuery = World.DefaultGameObjectInjectionWorld.EntityManager.CreateEntityQuery(typeof(EnemyTag));
-        
-        int spawnAmount = 1;
-        if (enemyEntityQuery.CalculateEntityCount() < spawnAmount)
+        timer += SystemAPI.Time.DeltaTime;
+
+        if (timer >= 0.25f)
         {
-            for (int i = 0; i < spawnAmount; i++)
-            {
-                CreateEnemy();
-            }
+            CreateRandomEnemyGroup();
+            timer = 0;
         }
     }
 
     private void CreateRandomEnemyGroup()
-    { 
-        // SpawnerComponent spawnerComponent = SystemAPI.GetSingleton<SpawnerComponent>();
-        // var enemyInfos = spawnerComponent.EnemyInfosArray;
-        // EntityCommandBuffer entityCommandBuffer = new EntityCommandBuffer(Allocator.Temp);
-        // RefRW<RandomComponent> randomComponent = SystemAPI.GetSingletonRW<RandomComponent>();
-        // var randomGroup = randomComponent.ValueRW.Random.NextInt(0, enemyInfos.Length);
-        //
-        // var enemyInfo = enemyInfos[randomGroup];
-        // CreateEnemy(enemyInfo, spawnerComponent);
-    }
-
-    // private void CreateEnemy(EnemyInfos enemyInfos, SpawnerComponent spawnerComponent)
-    //  {
-    //      EntityCommandBuffer entityCommandBuffer = new EntityCommandBuffer(Allocator.Temp);
-    //      RefRW<RandomComponent> randomComponent = SystemAPI.GetSingletonRW<RandomComponent>();
-    //      var randomPosition = GenerateRandomPosition(randomComponent, spawnerComponent);
-    //      for (int i = 0; i < enemyInfos.count; i++)
-    //      {
-    //          Entity spawnEntity = entityCommandBuffer.Instantiate(enemyInfos.Entity);
-    //          float3 offset = new float3( randomComponent.ValueRW.Random.NextFloat(-0.5f, 0.5f),  
-    //                                         randomComponent.ValueRW.Random.NextFloat(-0.5f, 0.5f), 0f);
-    //          float3 spawnPosition = randomPosition + offset;
-    //           
-    //          entityCommandBuffer.SetComponent(spawnEntity, new LocalTransform
-    //          {
-    //              Position = spawnPosition
-    //          });
-    //          entityCommandBuffer.Playback(World.DefaultGameObjectInjectionWorld.EntityManager);
-    //      }
-    //  }
-    
-    private void CreateEnemy()
     {
-        SpawnerComponent spawnerComponent = SystemAPI.GetSingleton<SpawnerComponent>();
+        var spawnerComponent = SystemAPI.GetSingleton<SpawnerComponent>();
+        var spawnerComponentEntity = SystemAPI.GetSingletonEntity<SpawnerComponent>();
         
         EntityCommandBuffer entityCommandBuffer = new EntityCommandBuffer(Allocator.Temp);
-    
         RefRW<RandomComponent> randomComponent = SystemAPI.GetSingletonRW<RandomComponent>();
-    
-        Entity spawnEntity = entityCommandBuffer.Instantiate(spawnerComponent.enemyPrefab);
-    
-        entityCommandBuffer.SetComponent(spawnEntity, new LocalTransform
-        {
-            Position = GenerateRandomPosition(randomComponent, spawnerComponent)
-        });
-        entityCommandBuffer.Playback(World.DefaultGameObjectInjectionWorld.EntityManager);
         
+        var buffer = GetBufferLookup<EnemyInfoBuffer>()[spawnerComponentEntity];
+        var randomGroup = randomComponent.ValueRW.Random.NextFloat(0, buffer.Length);
+        var group = buffer[(int)randomGroup];
+        var randomPosition = GenerateRandomPosition(randomComponent, spawnerComponent);
+
+        for (int i = 0; i < group.count; i++)
+        {
+            Entity spawnEntity = entityCommandBuffer.Instantiate(group.enemyPrefab);
+        
+            var offset = new float3(randomComponent.ValueRW.Random.NextFloat(-0.5f, 0.5f), randomComponent.ValueRW.Random.NextFloat(0, buffer.Length), 0);
+            entityCommandBuffer.SetComponent(spawnEntity, new LocalTransform
+            {
+                Position = randomPosition + offset
+            });
+        }
+
+        entityCommandBuffer.Playback(World.DefaultGameObjectInjectionWorld.EntityManager);
     }
-    
+
     private float3 GenerateRandomPosition(RefRW<RandomComponent> randomComponent,SpawnerComponent spawnerComponent)
     {
         float randX, randY;
