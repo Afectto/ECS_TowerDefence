@@ -8,33 +8,40 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.Player.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Resources" t="Include">
-          <e p="Image" t="Include" />
-          <e p="Prefabs" t="Include">
-            <e p="Enemy" t="Include">
-              <e p="EnemyPrefabs" t="Include" />
-              <e p="EnemyVariant" t="Include" />
-              <e p="Miniature Army 2D V.1" t="Include">
-                <e p="Animation" t="Include">
-                  <e p="Knight" t="Include" />
-                  <e p="Merchant" t="Include" />
-                  <e p="Peasant" t="Include" />
-                  <e p="Priest" t="Include" />
-                  <e p="Soldier" t="Include" />
-                  <e p="Thief" t="Include" />
-                </e>
-                <e p="Sprite" t="Include" />
+        <e p="Prefabs" t="Include">
+          <e p="Enemy" t="Include">
+            <e p="EnemyPrefabs" t="Include" />
+            <e p="EnemyVariant" t="Include" />
+            <e p="Miniature Army 2D V.1" t="Include">
+              <e p="Animation" t="Include">
+                <e p="Knight" t="Include" />
+                <e p="Merchant" t="Include" />
+                <e p="Peasant" t="Include" />
+                <e p="Priest" t="Include" />
+                <e p="Soldier" t="Include" />
+                <e p="Thief" t="Include" />
               </e>
+              <e p="Sprite" t="Include" />
             </e>
           </e>
-          <e p="ScriptableObject" t="Include">
-            <e p="EnemyGroup" t="Include" />
-            <e p="EnemyInfo" t="Include" />
+          <e p="Inventory" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Image" t="Include" />
+          <e p="Inventory" t="Include">
+            <e p="BaseBuff" t="Include" />
           </e>
         </e>
-        <e p="SceneDependencyCache" t="Include" />
         <e p="Scenes" t="Include">
           <e p="SampleScene" t="Include" />
+        </e>
+        <e p="ScriptableObject" t="Include">
+          <e p="Buffs" t="Include">
+            <e p="TowerBuff" t="Include" />
+            <e p="WeaponBuff" t="Include" />
+          </e>
+          <e p="EnemyGroup" t="Include" />
+          <e p="EnemyInfo" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="Authorings" t="Include">
@@ -67,11 +74,58 @@
             <e p="TargetPositionComponent.cs" t="Include" />
           </e>
           <e p="EnemyInfo.cs" t="Include" />
+          <e p="EntryPoint.cs" t="Include" />
+          <e p="Inventory" t="Include">
+            <e p="Controller" t="Include">
+              <e p="InventoryGridController.cs" t="Include" />
+              <e p="InventorySlotController.cs" t="Include" />
+              <e p="ScreenController.cs" t="Include" />
+            </e>
+            <e p="Data" t="Include">
+              <e p="InventoryGridData.cs" t="Include" />
+              <e p="InventoryListData.cs" t="Include" />
+              <e p="InventorySlotData.cs" t="Include" />
+            </e>
+            <e p="InventoryGrid.cs" t="Include" />
+            <e p="InventoryGridView.cs" t="Include" />
+            <e p="InventoryService.cs" t="Include" />
+            <e p="InventorySlot.cs" t="Include" />
+            <e p="ReadOnly" t="Include">
+              <e p="AddItemsToInventoryGridResult.cs" t="Include" />
+              <e p="IReadOnlyInventory.cs" t="Include" />
+              <e p="IReadOnlyInventoryGrid.cs" t="Include" />
+              <e p="IReadOnlyInventoryList.cs" t="Include" />
+              <e p="IReadOnlyInventorySlot.cs" t="Include" />
+              <e p="RemoveItemsFromInventoryGridResult.cs" t="Include" />
+            </e>
+            <e p="View" t="Include">
+              <e p="InventorySlotView.cs" t="Include" />
+              <e p="InventoryView.cs" t="Include" />
+              <e p="ScreenView.cs" t="Include" />
+            </e>
+          </e>
           <e p="ScriptableObject" t="Include">
+            <e p="Buffs" t="Include">
+              <e p="Buffs.cs" t="Include" />
+              <e p="TowerBuff" t="Include">
+                <e p="BuffTower.cs" t="Include" />
+                <e p="TowerBuff.cs" t="Include" />
+                <e p="TypeTowerBuff.cs" t="Include" />
+              </e>
+              <e p="WeaponBuff" t="Include">
+                <e p="BuffWeapon.cs" t="Include" />
+                <e p="TowerWeaponBuff.cs" t="Include" />
+                <e p="TypeWeapon.cs" t="Include" />
+                <e p="TypeWeaponBuff.cs" t="Include" />
+              </e>
+            </e>
             <e p="EnemyGroup" t="Include">
               <e p="EnemyGroup.cs" t="Include" />
               <e p="EnemyInfoScriptableObject.cs" t="Include" />
             </e>
+          </e>
+          <e p="Shop" t="Include">
+            <e p="Shop.cs" t="Include" />
           </e>
           <e p="Systems" t="Include">
             <e p="AnimateSystem.cs" t="Include" />

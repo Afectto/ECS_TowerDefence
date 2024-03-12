@@ -1,7 +1,5 @@
-    using System;
-    using System.Collections.Generic;
-    using Unity.Collections;
-    using Unity.Entities;
+using System.Collections.Generic;
+using Unity.Entities;
     using UnityEngine;
 
     public struct EnemyInfoBuffer : IBufferElementData
@@ -13,7 +11,6 @@
     
     public class SpawnerAuthoring : MonoBehaviour
     {
-        public GameObject enemyPrefab;
         public List<EnemyInfoScriptableObject> enemyInfoList;
     }
     
@@ -42,7 +39,6 @@
                 yMax = 6f,
                 avoidanceRadius = 20f,
 
-                enemyPrefab = GetEntity(authoring.enemyPrefab)
             });
         }
 
