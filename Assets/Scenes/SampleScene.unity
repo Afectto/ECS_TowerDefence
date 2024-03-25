@@ -257,9 +257,9 @@ RectTransform:
   - {fileID: 1201289408}
   m_Father: {fileID: 71564745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 868, y: -433}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -92, y: 107.00012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365436375
@@ -276,6 +276,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Inventory: {fileID: 988618151}
   ShopIcon: {fileID: 1201289411}
+  TowerBuffs:
+  - {fileID: 11400000, guid: c5b76ab9fe2523e44a6a9f76942354c2, type: 2}
+  - {fileID: 11400000, guid: de64c0f1c64d91e479e5cd90d548298f, type: 2}
+  - {fileID: 11400000, guid: 9085a8b9ba5336848bacde6a9c723ff9, type: 2}
+  - {fileID: 11400000, guid: dfac1c1af0cd9004c9820c05a67418c4, type: 2}
+  TowerWeaponBuffs:
+  - {fileID: 11400000, guid: 583592c178119a04bbf31e9689bfd27d, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +385,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1440023327371245806, guid: 9cf9e4bcdf5a96d45990ed069e1d891b, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1440023327371245806, guid: 9cf9e4bcdf5a96d45990ed069e1d891b, type: 3}
       propertyPath: m_SortingLayerID

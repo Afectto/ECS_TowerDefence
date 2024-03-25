@@ -6,6 +6,11 @@ using Unity.Jobs;
 [BurstCompile]
 public partial struct MovingISystem : ISystem
 {
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<RandomComponent>();
+    }
+
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
@@ -37,5 +42,9 @@ public partial struct MoveJob : IJobEntity
         float reachedTargetDistance = targetDistanceComponents[entity].distance;
         bool isMoving = moveToPositionAspect.Move(deltaTime, reachedTargetDistance);
         entityManager.SetComponentEnabled<WalkingStateTag>(entity, isMoving);
+        if (!isMoving)
+        {
+            entityManager.SetComponentEnabled<AttackingStateTag>(entity, true);
+        }
     }
 }

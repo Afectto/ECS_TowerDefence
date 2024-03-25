@@ -9,12 +9,18 @@ public partial class SpawnerSystem : SystemBase
 {
     private List<EnemyGroup> _enemyGroups;
     private float timer = Single.MaxValue;
-    
+
+    protected override void OnCreate()
+    {
+        RequireForUpdate<SpawnerComponent>();
+        RequireForUpdate<RandomComponent>();
+    }
+
     protected override void OnUpdate()
     {
         timer += SystemAPI.Time.DeltaTime;
 
-        if (timer >= 0.25f)
+        if (timer >= 1.25f)
         {
             CreateRandomEnemyGroup();
             timer = 0;

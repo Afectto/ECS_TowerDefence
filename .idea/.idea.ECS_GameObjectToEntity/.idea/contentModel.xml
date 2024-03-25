@@ -25,6 +25,12 @@
             </e>
           </e>
           <e p="Inventory" t="Include" />
+          <e p="Weapon" t="Include">
+            <e p="EnemyWeapon" t="Include" />
+            <e p="Projectile" t="Include">
+              <e p="EnemyProjectile" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Resources" t="Include">
           <e p="Image" t="Include" />
@@ -32,6 +38,7 @@
             <e p="BaseBuff" t="Include" />
           </e>
         </e>
+        <e p="SceneDependencyCache" t="Include" />
         <e p="Scenes" t="Include">
           <e p="SampleScene" t="Include" />
         </e>
@@ -44,37 +51,53 @@
           <e p="EnemyInfo" t="Include" />
         </e>
         <e p="Scripts" t="Include">
-          <e p="Authorings" t="Include">
-            <e p="AnimatorAuthoring.cs" t="Include" />
-            <e p="AttackRangeAuthoring.cs" t="Include" />
-            <e p="EnemytagAuthoring.cs" t="Include" />
-            <e p="EntityGameObject.cs" t="Include" />
-            <e p="RandomAuthoring.cs" t="Include" />
-            <e p="SpawnerAuthoring.cs" t="Include" />
-            <e p="SpeedAuthoring.cs" t="Include" />
-            <e p="TargetPositionAuthoring.cs" t="Include" />
-          </e>
-          <e p="Components" t="Include">
-            <e p="Aspects" t="Include">
-              <e p="MoveToPositionAspect.cs" t="Include" />
+          <e p="ECS" t="Include">
+            <e p="Authorings" t="Include">
+              <e p="AnimatorAuthoring.cs" t="Include" />
+              <e p="AttackRangeAuthoring.cs" t="Include" />
+              <e p="EnemytagAuthoring.cs" t="Include" />
+              <e p="EntityGameObject.cs" t="Include" />
+              <e p="ProjectileAuthoring.cs" t="Include" />
+              <e p="RandomAuthoring.cs" t="Include" />
+              <e p="SpawnerAuthoring.cs" t="Include" />
+              <e p="SpeedAuthoring.cs" t="Include" />
+              <e p="TargetPositionAuthoring.cs" t="Include" />
+              <e p="TowerAuthoring.cs" t="Include" />
+              <e p="WeaponAuthoring.cs" t="Include" />
             </e>
-            <e p="AttackRangeComponent.cs" t="Include" />
-            <e p="RandomComponent.cs" t="Include" />
-            <e p="SpawnerComponent.cs" t="Include" />
-            <e p="SpeedComponent.cs" t="Include" />
-            <e p="Tags" t="Include">
-              <e p="EnemyTag" t="Include">
-                <e p="AttackingStateTag.cs" t="Include" />
-                <e p="DieStateTag.cs" t="Include" />
-                <e p="EnemyTag.cs" t="Include" />
-                <e p="HurtStateTag.cs" t="Include" />
-                <e p="WalkingStateTag.cs" t="Include" />
+            <e p="Components" t="Include">
+              <e p="Aspects" t="Include">
+                <e p="MoveToPositionAspect.cs" t="Include" />
               </e>
+              <e p="AttackRangeComponent.cs" t="Include" />
+              <e p="ProjectileComponent.cs" t="Include" />
+              <e p="RandomComponent.cs" t="Include" />
+              <e p="SpawnerComponent.cs" t="Include" />
+              <e p="SpeedComponent.cs" t="Include" />
+              <e p="Tags" t="Include">
+                <e p="EnemyTag" t="Include">
+                  <e p="AttackingStateTag.cs" t="Include" />
+                  <e p="DieStateTag.cs" t="Include" />
+                  <e p="EnemyTag.cs" t="Include" />
+                  <e p="HurtStateTag.cs" t="Include" />
+                  <e p="WalkingStateTag.cs" t="Include" />
+                </e>
+                <e p="TowerTag.cs" t="Include" />
+              </e>
+              <e p="TargetPositionComponent.cs" t="Include" />
+              <e p="TowerComponent.cs" t="Include" />
+              <e p="WeaponComponent.cs" t="Include" />
+              <e p="WeaponInfoBufferElementData.cs" t="Include" />
             </e>
-            <e p="TargetPositionComponent.cs" t="Include" />
+            <e p="Systems" t="Include">
+              <e p="AnimateSystem.cs" t="Include" />
+              <e p="MovingISystem.cs" t="Include" />
+              <e p="ProjectileSystem.cs" t="Include" />
+              <e p="SpawnerSystem.cs" t="Include" />
+              <e p="TowerSystem.cs" t="Include" />
+            </e>
           </e>
           <e p="EnemyInfo.cs" t="Include" />
-          <e p="EntryPoint.cs" t="Include" />
           <e p="Inventory" t="Include">
             <e p="Controller" t="Include">
               <e p="InventoryGridController.cs" t="Include" />
@@ -126,11 +149,6 @@
           </e>
           <e p="Shop" t="Include">
             <e p="Shop.cs" t="Include" />
-          </e>
-          <e p="Systems" t="Include">
-            <e p="AnimateSystem.cs" t="Include" />
-            <e p="MovingISystem.cs" t="Include" />
-            <e p="SpawnerSystem.cs" t="Include" />
           </e>
         </e>
       </e>

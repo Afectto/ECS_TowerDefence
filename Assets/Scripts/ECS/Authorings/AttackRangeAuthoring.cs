@@ -10,7 +10,8 @@ public class AttackRangeBaker : Baker<AttackRangeAuthoring>
 {
     public override void Bake(AttackRangeAuthoring authoring)
     {
-        AddComponent(new AttackRangeComponent{
+        var entity = GetEntity(TransformUsageFlags.Dynamic);
+        AddComponent(entity, new AttackRangeComponent{
             distance = authoring.distance
         });
     }

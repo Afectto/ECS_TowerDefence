@@ -2,5 +2,6 @@
 {
     Pierce,
     Normal,
-    Magic
+    Magic,
+    Siege
 }
