@@ -9,8 +9,9 @@ public class EnemyInfo
 
 public enum EnemyType
 {
-    Knight,
     Archer,
+    Knight,
+    Merchant,
     Priest,
     Soldier,
     Thief

@@ -11,6 +11,7 @@ public partial struct AnimateSystem : ISystem
         CreateAnimationGameObject(ref state);
         UpdateAnimationPosition(ref state);
         UpdateRemoveComponentOnDestroy(ref state);
+        UpdateAttackAnimation(ref state);
     }
 
     private void CreateAnimationGameObject(ref SystemState state)
@@ -33,14 +34,35 @@ public partial struct AnimateSystem : ISystem
     private void UpdateAnimationPosition(ref SystemState state)
     {
         var entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        foreach (var (transform, animatorReference, target, entity) in 
-            SystemAPI.Query<LocalTransform, AnimatorGameObject, TargetPositionComponent>().WithEntityAccess())
+        foreach (var (transform, animatorReference, entity) in 
+            SystemAPI.Query<LocalTransform, AnimatorGameObject>().WithEntityAccess())
         {     
             var walkingState = entityManager.IsComponentEnabled<WalkingStateTag>(entity);
-            animatorReference.value.SetBool("IsWalking", walkingState);
+            ChangeAnimationIfNeed("IsWalking", animatorReference, walkingState);
+            
             animatorReference.value.transform.position = transform.Position;
             animatorReference.value.transform.rotation = transform.Rotation;
             animatorReference.value.transform.localScale = new Vector3(transform.Scale, 1, 1);
+        }
+    }
+
+    private void UpdateAttackAnimation(ref SystemState state)
+    {
+        var entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        foreach (var (animatorReference, entity) in 
+            SystemAPI.Query<AnimatorGameObject>().WithEntityAccess())
+        {     
+            var attackingState = entityManager.IsComponentEnabled<AttackingStateTag>(entity);
+            ChangeAnimationIfNeed("IsAttaking", animatorReference, attackingState);
+        }
+    }
+
+    private void ChangeAnimationIfNeed(string nameAnimation, AnimatorGameObject animatorReference, bool state)
+    {
+        var currentState = animatorReference.value.GetBool(nameAnimation);
+        if (currentState != state)
+        {
+            animatorReference.value.SetBool(nameAnimation, state);
         }
     }
 

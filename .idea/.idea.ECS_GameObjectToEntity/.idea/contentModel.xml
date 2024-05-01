@@ -8,21 +8,21 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.Player.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Enemy" t="Include">
+          <e p="Animation" t="Include">
+            <e p="Knight" t="Include" />
+            <e p="Merchant" t="Include" />
+            <e p="Peasant" t="Include" />
+            <e p="Priest" t="Include" />
+            <e p="Soldier" t="Include" />
+            <e p="Thief" t="Include" />
+          </e>
+          <e p="Sprite" t="Include" />
+        </e>
         <e p="Prefabs" t="Include">
           <e p="Enemy" t="Include">
             <e p="EnemyPrefabs" t="Include" />
             <e p="EnemyVariant" t="Include" />
-            <e p="Miniature Army 2D V.1" t="Include">
-              <e p="Animation" t="Include">
-                <e p="Knight" t="Include" />
-                <e p="Merchant" t="Include" />
-                <e p="Peasant" t="Include" />
-                <e p="Priest" t="Include" />
-                <e p="Soldier" t="Include" />
-                <e p="Thief" t="Include" />
-              </e>
-              <e p="Sprite" t="Include" />
-            </e>
           </e>
           <e p="Inventory" t="Include" />
           <e p="Weapon" t="Include">

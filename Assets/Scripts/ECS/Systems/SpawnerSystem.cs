@@ -9,6 +9,7 @@ public partial class SpawnerSystem : SystemBase
 {
     private List<EnemyGroup> _enemyGroups;
     private float timer = Single.MaxValue;
+    private int _countGroup = 0;
 
     protected override void OnCreate()
     {
@@ -20,10 +21,11 @@ public partial class SpawnerSystem : SystemBase
     {
         timer += SystemAPI.Time.DeltaTime;
 
-        if (timer >= 1.25f)
+        if (timer >= 1.25f && _countGroup < Double.PositiveInfinity)
         {
             CreateRandomEnemyGroup();
             timer = 0;
+            _countGroup++;
         }
     }
 
